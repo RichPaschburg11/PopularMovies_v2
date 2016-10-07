@@ -16,14 +16,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.paschburg.rich.popularmovies_v2.SettingsActivity;
-import com.paschburg.rich.popularmovies_v2.UserPrefs;
-import com.paschburg.rich.popularmovies_v2.AboutActivity;
-import com.paschburg.rich.popularmovies_v2.ApiKey;
-import com.paschburg.rich.popularmovies_v2.DetailActivity;
-import com.paschburg.rich.popularmovies_v2.GridViewAdapter;
-import com.paschburg.rich.popularmovies_v2.ImageItem;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,8 +45,8 @@ public class PopularMoviesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        FetchMoviesTask fetch=new FetchMoviesTask();
-        fetch.execute("orderbypopularity");
+    //    FetchMoviesTask fetch=new FetchMoviesTask();
+    //    fetch.execute("orderbypopularity");
     }
 
     @Override
@@ -83,12 +75,14 @@ public class PopularMoviesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         GridView gridView = (GridView) rootView.findViewById(R.id.gridView1);
 
-        String[] resultStrs = new String[number_movies_from_call];
+        // String[] resultStrs = new String[];
+        // Define json to set initial images
         String[] json = new String[number_movies_from_call];
 
         ImageItem[] imageitems2 = new ImageItem[number_movies_from_call];
 
         Uri.Builder builder;
+
 
         for (int i=0; i < number_movies_from_call; i++){
 
@@ -99,11 +93,12 @@ public class PopularMoviesFragment extends Fragment {
                     .appendPath(path2)
                     .appendPath(width)
                     .appendPath("")
-                    .appendPath(json[i]);
+                    .appendPath("/rjaSuTpQ3JULInHH6kpjcnsvnQo.jpg");
 
             imageitems2[i] = new ImageItem();
             imageitems2[i].imagep = builder.build().toString();
         }
+
 
         mPopularMoviesAdapter = new GridViewAdapter (
                 getActivity(),
@@ -188,6 +183,10 @@ public class PopularMoviesFragment extends Fragment {
                         .appendQueryParameter("api_key", apikeystring);
 
                 String myUrl = builder.build().toString();
+
+                //  Optional: comment out the following line: // Log.e(LOG_TAG, "URL request = " + myUrl);
+                Log.e(LOG_TAG, "URL request = " + myUrl);
+
                 URL url = new URL(myUrl);
 
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -204,7 +203,8 @@ public class PopularMoviesFragment extends Fragment {
 
                 String line;
                 while ((line = reader.readLine()) != null){
-                    //  Log.e(LOG_TAG, "line = " + line);
+                    //  Optional: comment out the following line: // Log.e(LOG_TAG, "line = " + line);
+                    Log.e(LOG_TAG, "line = " + line);
                     buffer.append(line);
                 }
 

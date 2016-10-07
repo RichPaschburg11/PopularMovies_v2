@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.paschburg.rich.popularmovies_v2.ImageItem;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -68,7 +67,8 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
     }
 
 
-    public void addImageItem(int i, ImageItem imageitem){
+    public void addImageItem( int i, ImageItem imageitem){
+
         data[i] = imageitem;
     }
 }
