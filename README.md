@@ -2,7 +2,7 @@ Popular Movies Version 2
 
 Instructions to set the API key for The Movie Database (TMDb).
 
-Edit the file app/src/main/java/com/paschburg/rich/popularmovies_v1/ApiKey.java.
+Edit the file app/src/main/java/com/paschburg/rich/popularmovies_v2/ApiKey.java.
 Replace "PLACE API KEY HERE" with the API key.
 
 Note: from the project root directory do the command:
