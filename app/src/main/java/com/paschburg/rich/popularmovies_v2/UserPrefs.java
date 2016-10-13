@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
  */
 public class UserPrefs {
 
-    private static final String packageName = "com.paschburg.rich.popularmovies_v1.";
+    private static final String packageName = "com.paschburg.rich.popularmovies_v2.";
     private static final String PREFS_NAME = packageName + "UserPrefs";
     private static final String PREFS_INDEX = packageName + "PrefsIndex";
     private static SharedPreferences settings;
