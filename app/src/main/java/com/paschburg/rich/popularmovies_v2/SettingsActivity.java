@@ -15,11 +15,9 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
-import com.paschburg.rich.popularmovies_v2.UserPrefs;
-import com.paschburg.rich.popularmovies_v2.AppCompatPreferenceActivity;
-
 public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
+    // TODO Fix deprecated code
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_general);
@@ -88,7 +86,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 preference.setSummary(stringValue);
             }
 
-            // Log.e("xxxxxxx Pref Value =", stringValue);
             UserPrefs userPrefs = new UserPrefs(preference.getContext());
             String sortorder = "popularity.desc";
             if (stringValue.equals("vote")) sortorder ="vote_average.desc";
@@ -142,6 +139,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("example_list"));
         }
 
+        /**
+         * No need to deactivate home key
+         * @param item
+         * @return
+         */
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
@@ -153,8 +155,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
 
 
-    }
 
+    }
 
 }
 
