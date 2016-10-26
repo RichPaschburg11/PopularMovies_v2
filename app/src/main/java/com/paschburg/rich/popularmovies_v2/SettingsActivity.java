@@ -3,7 +3,6 @@ package com.paschburg.rich.popularmovies_v2;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -138,19 +137,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("example_text"));
             bindPreferenceSummaryToValue(findPreference("example_list"));
         }
-
-        /**
-         * No need to deactivate home key
-         * @param item
-         * @return
-         */
+        
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
-            }
+            // if (id == android.R.id.home) {
+            //     startActivity(new Intent(getActivity(), SettingsActivity.class));
+            //     return true;
+            // }
             return super.onOptionsItemSelected(item);
         }
 
