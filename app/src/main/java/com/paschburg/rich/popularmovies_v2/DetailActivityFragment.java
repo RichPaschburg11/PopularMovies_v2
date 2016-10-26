@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.paschburg.rich.popularmovies_v2.UserPrefs;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -60,8 +59,9 @@ public class DetailActivityFragment extends Fragment {
 
         ((TextView) rootView.findViewById(R.id.title)).setText(details[0]);
 
-        Picasso.with(getActivity()).load(details[1]).into((ImageView) rootView.findViewById(R.id.image_for_details));
+        Log.e(LOG_TAG, details[1]);
 
+        Picasso.with(getActivity()).load(details[1]).into((ImageView) rootView.findViewById(R.id.image_for_details));
         ((TextView) rootView.findViewById(R.id.year)).setText(details[2]);
         ((TextView) rootView.findViewById(R.id.votes)).setText(details[3]);
         ((TextView) rootView.findViewById(R.id.popularity)).setText(details[4]);
