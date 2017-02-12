@@ -46,12 +46,12 @@ public class MainActivity extends ActionBarActivity {
         int intsize = (int)size;
         int intsizedp = (int)sizedp;
 
-        if (intsizedp >= ( 180 * 2 ) )intsize = 0;
+        if (intsizedp >= ( 180 * 2 ) )intsizedp = 0;
         else Log.e(LOG_TAG, "small screen size in dp = " + Integer.toString(intsizedp));
 
         context = getApplicationContext();
         UserPrefs userPrefs = new UserPrefs(context);
-        userPrefs.setWidth(intsize);
+        userPrefs.setWidth(intsizedp);
 
     }
 }

@@ -6,14 +6,13 @@
     android:gravity="center">
 
     <GridView
-        android:stretchMode="none"
+        android:stretchMode="columnWidth"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:columnWidth="180dp"
         android:verticalSpacing="0dp"
         android:horizontalSpacing="0dp"
-        android:numColumns="auto_fit"
+        android:numColumns="2"
         android:id="@+id/gridView1"
         android:adjustViewBounds="true"/>
 

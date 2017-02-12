@@ -1,11 +1,12 @@
 package com.paschburg.rich.popularmovies_v2;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,6 +38,7 @@ public class PopularMoviesFragment extends Fragment {
     private String path1 = "t";
     private String path2 = "p";
     private String width = "w185";
+    private int nominalWidth = 185;
 
     public PopularMoviesFragment() {
     }
@@ -108,23 +110,35 @@ public class PopularMoviesFragment extends Fragment {
         gridView.setAdapter(mPopularMoviesAdapter);
 
         /*
-           If the portrait screen width in dp is less than 180dp * 2, set a smaller column width
-           here than the default, and set the number of columns to 2.  So each phone has at least two
-           columns of movie images in portrait mode.  Note that some of each image is cut off, as the
-           height is not changed.  Refer to the code in MainActivity.java that sets the
-           userPrefs.getWidth() value for a small phone.  For larger devices, a value of 0 is given
-           indicating that the default size of 180dp should be used.
+           If the portrait screen width in dp is less than 180dp * 2, set the number of columns to 2.
         */
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+        /*
+          if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             userPrefs = new UserPrefs(getActivity());
-            int width = userPrefs.getWidth();
-            if (width != 0) {
-                int widthHalf = width / 2;
-                gridView.setColumnWidth(widthHalf);
+            int widthdp = userPrefs.getWidth();
+            // widthdp = getActivity().getResources().getDisplayMetrics().widthPixels;
+            gridView.setNumColumns(widthdp/nominalWidth);
+            if (widthdp < 2 * nominalWidth) {
+                // int widthHalf = widthdp / 2;
+                // gridView.setColumnWidth(widthHalf);
                 gridView.setNumColumns(2);
             }
         }
+        */
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager()
+                                  .getDefaultDisplay()
+                                  .getMetrics(displayMetrics);
+        // int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        int numColumns = 2;
+        if ( width > 2 * nominalWidth )
+            numColumns = width / nominalWidth;
+            // integer devide will round down
+        gridView.setNumColumns( numColumns );
+
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                @Override
