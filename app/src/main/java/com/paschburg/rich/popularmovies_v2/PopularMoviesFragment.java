@@ -38,7 +38,7 @@ public class PopularMoviesFragment extends Fragment {
     private String path1 = "t";
     private String path2 = "p";
     private String width = "w185";
-    private int nominalWidth = 185;
+    private int nominalWidth = 1; // let image be 1 inch wide
 
     public PopularMoviesFragment() {
     }
@@ -132,11 +132,12 @@ public class PopularMoviesFragment extends Fragment {
                                   .getDefaultDisplay()
                                   .getMetrics(displayMetrics);
         // int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
+        int xdpiInt = (int) displayMetrics.xdpi;
+        int width = displayMetrics.widthPixels / xdpiInt;
         int numColumns = 2;
         if ( width > 2 * nominalWidth )
             numColumns = width / nominalWidth;
-            // integer devide will round down
+            // integer divide will round down
         gridView.setNumColumns( numColumns );
 
 
