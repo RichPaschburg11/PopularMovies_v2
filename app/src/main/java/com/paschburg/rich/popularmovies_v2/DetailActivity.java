@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.paschburg.rich.popularmovies_v2.SettingsActivity;
-import com.paschburg.rich.popularmovies_v2.AboutActivity;
-
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -41,7 +38,10 @@ public class DetailActivity extends AppCompatActivity {
             startActivity(new Intent(this, AboutActivity.class));
             return true;
         }
-
+        if (id == R.id.action_refresh) {
+            startActivity(new Intent(this, PopularMoviesFragment.class));
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

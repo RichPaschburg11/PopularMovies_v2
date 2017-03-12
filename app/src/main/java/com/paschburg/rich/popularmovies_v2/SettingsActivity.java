@@ -16,11 +16,11 @@ import android.view.MenuItem;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
-    // TODO Fix deprecated code
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_general);
         bindPreferenceSummaryToValue(findPreference("sortorder"));
+        // TODO Remove deprecated code
     }
 
 

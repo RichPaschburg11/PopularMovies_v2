@@ -31,14 +31,14 @@ import java.net.URL;
 public class PopularMoviesFragment extends Fragment {
 
     private GridViewAdapter mPopularMoviesAdapter;
-    private GridView gridVies;
     public UserPrefs userPrefs;
     private int number_movies_from_call = 20;
     private String authority = "image.tmdb.org";
     private String path1 = "t";
     private String path2 = "p";
     private String width = "w185";
-    private int nominalWidth = 1; // let image be 1 inch wide
+    private int nominalWidth = 2; // let image be 2 inches wide
+    public Boolean reset = true;
 
     public PopularMoviesFragment() {
     }
@@ -66,6 +66,10 @@ public class PopularMoviesFragment extends Fragment {
         if (id == R.id.action_about) {
             startActivity(new Intent(getActivity(), AboutActivity.class));
             return true;
+        }
+        if (id == R.id.action_refresh) {
+            // startActivity(new Intent(getActivity(), PopularMoviesFragment.class));
+            // return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -113,19 +117,6 @@ public class PopularMoviesFragment extends Fragment {
            If the portrait screen width in dp is less than 180dp * 2, set the number of columns to 2.
         */
 
-        /*
-          if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            userPrefs = new UserPrefs(getActivity());
-            int widthdp = userPrefs.getWidth();
-            // widthdp = getActivity().getResources().getDisplayMetrics().widthPixels;
-            gridView.setNumColumns(widthdp/nominalWidth);
-            if (widthdp < 2 * nominalWidth) {
-                // int widthHalf = widthdp / 2;
-                // gridView.setColumnWidth(widthHalf);
-                gridView.setNumColumns(2);
-            }
-        }
-        */
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager()

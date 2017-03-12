@@ -14,7 +14,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context = getApplicationContext();
+        // context = getApplicationContext();
 
         // Create an InitializerBuilder
         Stetho.InitializerBuilder initializerBuilder =
