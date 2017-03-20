@@ -34,12 +34,13 @@ public class DetailActivity extends AppCompatActivity {
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
-        if (id == R.id.action_about) {
-            startActivity(new Intent(this, AboutActivity.class));
+        if (id == R.id.action_refresh) {
+            // reset = true;
+            startActivity(new Intent(this, MainActivity.class));
             return true;
         }
-        if (id == R.id.action_refresh) {
-            startActivity(new Intent(this, PopularMoviesFragment.class));
+        if (id == R.id.action_about) {
+            startActivity(new Intent(this, AboutActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -6,15 +6,15 @@ import android.content.Context;
 import com.facebook.stetho.Stetho;
 
 /**
- * Created by richardpaschburg on 12/22/15.
+ * Created by richardpaschburg
  */
 public class MyApplication extends Application {
-    public static Context context;
+    public Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        // context = getApplicationContext();
+        context = getApplicationContext();
 
         // Create an InitializerBuilder
         Stetho.InitializerBuilder initializerBuilder =

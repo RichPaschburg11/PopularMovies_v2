@@ -38,7 +38,7 @@ public class PopularMoviesFragment extends Fragment {
     private String path2 = "p";
     private String width = "w185";
     private int nominalWidth = 2; // let image be 2 inches wide
-    public Boolean reset = true;
+    public boolean reset;
 
     public PopularMoviesFragment() {
     }
@@ -63,13 +63,14 @@ public class PopularMoviesFragment extends Fragment {
             startActivity(new Intent(getActivity(), SettingsActivity.class));
             return true;
         }
+        if (id == R.id.action_refresh) {
+            reset = true;
+            startActivity(new Intent(getActivity(), MainActivity.class));
+            return true;
+        }
         if (id == R.id.action_about) {
             startActivity(new Intent(getActivity(), AboutActivity.class));
             return true;
-        }
-        if (id == R.id.action_refresh) {
-            // startActivity(new Intent(getActivity(), PopularMoviesFragment.class));
-            // return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -80,6 +81,10 @@ public class PopularMoviesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         GridView gridView = (GridView) rootView.findViewById(R.id.gridView1);
+
+        // if( reset ) reset = false;
+        //     else
+        //     return rootView;
 
         // String[] resultStrs = new String[];
         // Define json to set initial images
