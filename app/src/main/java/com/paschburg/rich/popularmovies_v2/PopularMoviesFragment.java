@@ -83,8 +83,8 @@ public class PopularMoviesFragment extends Fragment {
         GridView gridView = (GridView) rootView.findViewById(R.id.gridView1);
 
         // if( reset ) reset = false;
-        //     else
-        //     return rootView;
+        //    else
+        // return rootView;
 
         // String[] resultStrs = new String[];
         // Define json to set initial images
